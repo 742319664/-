@@ -8,7 +8,7 @@
 body {
     background: #ffffff !important;
     margin: 0 !important;
-    margin-top: 100px !important;
+    margin-top: 60px !important;
     /* 给顶部栏留空间 */
 }
 
@@ -21,11 +21,7 @@ footer,
 .Sticky,
 .GlobalSideBar,
 /* .ContentItem-actions, */
-.css-1t9l7ma,
-.VoteButton,
-/* .Comments-container, */
-/* .QuestionFollowButto, */
-/* .Question-mainColumn */
+.css-1t9l7ma
 {
     display: none !important;
 }
@@ -289,3 +285,53 @@ body::before {
     height: 200px;
     width: 100%;
 }
+
+/* 弱化内容操作栏（赞同、评论等）整体一行样式，但保留功能 */
+.ContentItem-actions {
+    font-size: 13px !important;
+    color: #888 !important;
+    background: none !important;
+    border-top: 1px solid #eee !important;
+    padding-top: 8px !important;
+    margin-top: 12px !important;
+    display: flex !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+}
+
+/* 所有按钮变成小字链接风格，保留点击功能 */
+.ContentItem-actions button,
+.ContentItem-actions a,
+.ContentItem-actions span {
+    font-size: 13px !important;
+    color: #888 !important;
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer !important;
+}
+
+/* 鼠标悬浮轻微变色，仍然不引人注意 */
+.ContentItem-actions button:hover,
+.ContentItem-actions a:hover {
+    color: #555 !important;
+    text-decoration: underline !important;
+}
+
+/* 去掉图标，只显示文字和数字 */
+.VoteButton svg,
+.ContentItem-action svg {
+    display: none !important;
+}
+
+/* 统一给知乎右侧栏加上 padding-top，让它避开顶部黑条 */
+.Question-sideColumn,
+.Topstory-sidebar,
+.Sticky {
+    padding-top: 50px !important;  /* 这个值和你上面正文的 padding 一样即可 */
+    box-sizing: border-box;
+}
+
+
