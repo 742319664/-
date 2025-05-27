@@ -20,7 +20,7 @@ footer,
 .QuestionHeader,
 .Sticky,
 .GlobalSideBar,
-/* .ContentItem-actions, */
+.ContentItem-actions,
 .css-1t9l7ma
 {
     display: none !important;
@@ -49,10 +49,11 @@ footer,
 } */
 /* ======= 伪造 logo 区域 ======= */
 body::after {
-    content: "           博客园       会员   周边   新闻   博问   闪存   班级   赞助商   Chat2DB";
+    content: "           博客园        会员   周边   新闻   博问   闪存   班级   赞助商   Chat2DB                                                                                                                    代码改变世界    🔍 📝 📄 🔔 ⚪";
     position: fixed;
     top: 0px;
     left: 50px;
+    width: 100%;
     font-size: 16px;
     font-family: "Segoe UI", sans-serif;
     color: #666;
@@ -333,5 +334,33 @@ body::before {
     padding-top: 50px !important;  /* 这个值和你上面正文的 padding 一样即可 */
     box-sizing: border-box;
 }
+/***标题取消加粗***/
 
+    /* 标题 */
+    .QuestionHeader-title {
+        color: transparent !important;
+        transition: color 0.3s ease !important;
+    }
 
+    .QuestionHeader-title:hover {
+        color: inherit !important;
+    }
+
+    /* timeline 标题 */
+    .ContentItem-title {
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* 图 */
+    .RichText figure div {
+        width: 20px !important;
+        height: auto !important;
+        transition: width 0.3s ease !important;
+    }
+
+    .RichText figure div:hover {
+        width: auto !important;
+        height: auto !important;
+    }
+/***标题取消加粗***/
