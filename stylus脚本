@@ -5,11 +5,20 @@
     transition: none !important;
 }
 
+
+
+/* 让知乎主内容下移并滚动 */
+#root {
+  position: relative !important;
+  top: 0 !important;
+  z-index: 1;
+}
+
+
 body {
-    background: #ffffff !important;
-    margin: 0 !important;
-    margin-top: 60px !important;
-    /* 给顶部栏留空间 */
+  margin: 0 !important;
+  padding-top: 0px !important;
+  background: #ffffff !important;
 }
 
 /* 隐藏知乎元素 */
@@ -17,7 +26,7 @@ header,
 footer,
 .AppHeader,
 .Question-sideColumn,
-.QuestionHeader,
+/* .QuestionHeader, */
 .Sticky,
 .GlobalSideBar,
 .ContentItem-actions,
@@ -57,10 +66,14 @@ body::after {
     font-size: 16px;
     font-family: "Segoe UI", sans-serif;
     color: #666;
-    z-index: 10000;
+/*     z-index: 10000; */
     white-space: pre;
     letter-spacing: 2px;
-
+  /* 顶部 logo 和导航栏样式 */
+/*     height: 55px;
+    top: 0; */
+    z-index: 9999;
+/*   pointer-events: none !important; */
 
     /* === 控制 logo 背景图 === */
     background-image: url('https://www.cnblogs.com/images/logo.svg?v=2SMrXdIvlZwVoB1akyXm38WIKuTHVqvGD0CweV-B6cY');
@@ -79,7 +92,7 @@ body::after {
     background-color: #fff !important;
     opacity: 1 !important;
     pointer-events: auto !important;
-    z-index: 10000;
+/*     z-index: 10000; */
     pointer-events: none !important;
 }
 #mock-sidebar-real {
@@ -352,9 +365,9 @@ body::before {
         font-style: normal;
     }
 
-    /* 图 */
+    /* 缩小图 */
     .RichText figure div {
-        width: 20px !important;
+        width: 240px !important;
         height: auto !important;
         transition: width 0.3s ease !important;
     }
@@ -364,3 +377,173 @@ body::before {
         height: auto !important;
     }
 /***标题取消加粗***/
+
+
+
+
+
+
+
+/* 列表标题前添加「文章」、「回答」、「视频」标记 */
+/*不需要就全部注释*/
+.ContentItem-title a[href*='zhuanlan']::before,
+.ContentItem-title a[href*='answer']::before,
+.ContentItem-title a[href*='video']::before {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-right: 0.5em;
+    padding: 0 0.5em;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    vertical-align: text-top;
+}
+.ContentItem-title a[href*='zhuanlan']::before {
+    content: '文';
+    color: #f49301;
+    border: 2px solid #f49609;
+}
+.ContentItem-title a[href*='answer']::before {
+    content: '答';
+    color: #05a659;
+    border: 1px solid #07974e;
+}
+.ContentItem-title a[href*='video']::before {
+    content: video
+    color: #dd00b1;
+    border: 1px solid #dd00b1;
+}
+
+
+
+
+
+
+/* 声明变量 */
+:root {
+    --zh-font-size: var(--hhp-size);
+    --zh-main-width: 60%;
+    --zh-content-width: 100%;
+}
+/* 加宽内容区域 */
+/* 首页 */
+#root .Topstory-container {
+    width: var(--zh-main-width);
+}
+#root .Topstory-mainColumn {
+    width: var(--zh-content-width);
+}
+#root .AppHeader-inner,
+#root .TopstoryPageHeader {
+    max-width: var(--zh-main-width);
+}
+#root .ContentItem .RichContent-actions {
+    box-sizing: border-box;
+    left: calc((100vw - var(--zh-content-width)) / 2 - 156px) !important;
+}
+/* 弹窗 */
+.Modal--fullPage {
+    width: var(--zh-content-width);
+}
+/* 文章页 */
+#root .Post-Header,
+#root .Post-RichTextContainer {
+    width: var(--zh-content-width);
+}
+#root .Post-RichTextContainer img {
+    width: 80%;
+}
+#root .Post-SideActions {
+    right: calc((100vw - var(--zh-content-width)) / 2 - 100px);
+}
+#root .Post-content .RichContent-actions {
+    box-sizing: border-box;
+    width: var(--zh-content-width) !important;
+    left: calc((100vw - var(--zh-content-width)) / 2) !important;
+}
+#root .Post-NormalMain>div, .Post-NormalSub>div {
+    width: var(--zh-content-width);
+}
+/* 回答页 */
+#root .Question-main {
+    width: var(--zh-main-width);
+}
+#root .Question-mainColumn {
+    width: calc(0.764 * var(--zh-main-width));
+}
+#root .QuestionHeader-content {
+    margin: 0 auto;
+    width: var(--zh-main-width);
+    max-width: unset;
+    padding: 0;
+}
+#root .QuestionHeader-footer-inner {
+    width: var(--zh-main-width);
+}
+#root .QuestionHeader-content .QuestionHeader-main {
+    flex: 1;
+}
+#root #QuestionAnswers-answers .RichContent-actions {
+    box-sizing: border-box;
+    width: calc(0.764 * var(--zh-main-width)) !important;
+    left: calc((100vw - var(--zh-main-width)) / 2 - 8px) !important;
+}
+#root .AuthorInfo {
+    max-width: 100%;
+}
+/* 专栏页 */
+#root .css-1xhi2j9 {
+    width: var(--zh-content-width);
+}
+#root .css-1xy3kyp {
+    padding: 0;
+    max-width: var(--zh-content-width);
+}
+#root .css-1f6hmyt {
+    width: var(--zh-content-width);
+}
+/* 搜索页 */
+#root .SearchTabs-inner {
+    justify-content: space-between;
+    width: var(--zh-main-width);
+}
+#root .Search-container {
+    width: var(--zh-main-width);
+}
+#root .Search-container #SearchMain {
+    width: var(--zh-content-width);
+}
+#root #SearchMain .RichContent-actions {
+    box-sizing: border-box;
+    padding-top: 0;
+    width: var(--zh-content-width) !important;
+    left: calc((100vw - var(--zh-main-width)) / 2 - 8px) !important;
+}
+#root #SearchMain .ContentItem-actions .ContentItem-action {
+    height: auto;
+    padding: 0;
+}
+#root .RelevantQuery li {
+    margin: 0 0.5rem 0.5rem 0;
+    width: 150px;
+}
+/* 用户页 */
+#ProfileHeader {
+    width: var(--zh-main-width);
+}
+#root .Profile-main {
+    width: var(--zh-main-width);
+}
+#root .Profile-mainColumn {
+    margin-right: 10px;
+    width: var(--zh-content-width);
+}
+#root .PageHeader .ProfileMain-header {
+    width: var(--zh-main-width);
+}
+/* 讨论页 */
+#root .App-main > div[class^="css-"] {
+    max-width: var(--zh-main-width);
+}
+#root .TopicFeedItem .ContentItem .RichContent-actions {
+    left: calc((100vw - var(--zh-content-width)) / 2 - 153px) !important;
+}
